@@ -6,6 +6,9 @@ const port = process.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const multer = require('multer');
+const upload = multer({dest: './upload'})
+
 app.get('/api/customers', (req, res) => {
     res.send([
         {
@@ -34,5 +37,11 @@ app.get('/api/customers', (req, res) => {
           }
     ]);
 });
+
+// app.use('/image', express.static('./upload'));
+
+// app.post('/api/customers', upload.single('image'), (req, res) => {
+//   let sql = 
+// })
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
